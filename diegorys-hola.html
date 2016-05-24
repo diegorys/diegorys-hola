@@ -1,0 +1,32 @@
+<template>
+	<style>
+		div {
+			background-color: #1e73be;
+			color: #FFFFFF;
+			padding: 1em;
+		}
+
+		a {
+			color: #FFFFFF;
+		}
+	</style>
+	<div>
+		Visita
+		<a href="http://diegorys.es" title="Ir a diegorys.es" target="_blank">
+		diegorys.es
+		</a>
+	</div>
+</template>
+<script>
+	var prototipo = Object.create(HTMLElement.prototype);
+	var template = document.currentScript.ownerDocument.querySelector('template').content;
+
+	prototipo.createdCallback = function() {
+		var clonTemplate = document.importNode(template, true);
+		this.createShadowRoot().appendChild(clonTemplate);
+	}
+
+	document.registerElement('diegorys-hola', {
+		prototype: prototipo
+	});
+</script>
